@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+
+        padding: 20px;
+
+        /* The width and height properties include the content, padding, and border. 
+        This makes it easier to set a specific size for an element and ensure it doesn't grow unexpectedly due to padding or borders. */
+        box-sizing: border-box;
+
+        /* The width and height properties include only the content.
+        Padding and borders are added outside of the content, increasing the overall size of the element. */
+        box-sizing: content-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div>this is a div</div>
+  </body>
+</html>

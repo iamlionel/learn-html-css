@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        font-size: 30px;
+      }
+
+      .h2 {
+        font-weight: 400;
+      }
+
+      .em {
+        font-style: italic;
+      }
+
+      /* 2 times the font size */
+      .line-height {
+        line-height: 1.5;
+      }
+
+      /* set height equals line-height,the content
+       will be vertical center */
+      .vertical-center {
+        height: 100px;
+        background-color: aqua;
+        line-height: 100px;
+      }
+
+      /* 
+       font shorthand property 
+       font: font-style font-weight font-size/line-height font-family
+       required to include font-size and font-family
+       */
+      .font-prop {
+        /* font: italic 700 30px/2 serif; */
+        font: 40px serif;
+      }
+    </style>
+  </head>
+  <body>
+    <p>change font size to 30px by element selector</p>
+    <div>edge browser default font size</div>
+    <hr />
+
+    <h2>default font weight of heading2</h2>
+    <h2 class="h2">change font weight to 400 by class selector</h2>
+    <hr />
+
+    <div class="em">set text emphasized</div>
+    <hr />
+
+    <p class="line-height">
+      Blockchain technology is revolutionizing industries by providing a
+      decentralized and secure way to store and transmit data. At its core,
+      blockchain is a distributed ledger that records transactions across a
+      network of computers. Each transaction, or "block," is linked to the
+      previous one, forming a chain of blocks. This cryptographic linkage
+      ensures that once recorded, data cannot be altered retroactively without
+      the alteration of all subsequent blocks, which requires the consensus of
+      the network majority. Blockchain's transparency, immutability, and
+      decentralized nature make it particularly attractive for applications
+      ranging from finance and supply chain management to voting systems and
+      healthcare. As it continues to evolve, blockchain promises to reshape how
+      businesses and societies operate, fostering trust, efficiency, and
+      innovation in diverse fields worldwide.
+    </p>
+    <hr />
+
+    <div class="vertical-center">Vertical Centering</div>
+
+    <div class="font-prop">change font attributes</div>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../iconfont/iconfont.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .banner {
+        margin: 50px auto;
+        width: 564px;
+        height: 315px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .banner img {
+        width: 564px;
+        border-radius: 12px;
+        vertical-align: middle;
+      }
+
+      .banner ul {
+        display: flex;
+      }
+
+      .banner .prev,
+      .banner .next {
+        display: none;
+        width: 20px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        text-decoration: none;
+        line-height: 30px;
+        color: white;
+      }
+
+      .banner:hover .prev,
+      .banner:hover .next {
+        display: block;
+      }
+
+      .banner .prev {
+        left: 0;
+        border-radius: 0 15px 15px 0;
+      }
+
+      .banner .next {
+        right: 0;
+        border-radius: 15px 0 0 15px;
+        text-align: center;
+      }
+
+      .banner ol {
+        position: absolute;
+        height: 13px;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.3);
+        display: flex;
+        border-radius: 10px;
+      }
+
+      .banner ol li {
+        margin: 3px;
+        width: 8px;
+        height: 8px;
+        background-color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .banner ol .active {
+        background-color: #ff5000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <ul>
+        <li><img src="../images/banner1.jpg" alt="" /></li>
+        <li><img src="../images/banner2.jpg" alt="" /></li>
+        <li><img src="../images/banner3.jpg" alt="" /></li>
+      </ul>
+
+      <a href="#" class="prev"><i class="iconfont icon-zuoce"></i></a>
+      <a href="#" class="next"><i class="iconfont icon-youce"></i></a>
+
+      <ol>
+        <li></li>
+        <li class="active"></li>
+        <li></li>
+      </ol>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const banner = document.querySelector(".banner");
+        const ul = banner.querySelector("ul");
+        const lis = ul.querySelectorAll("li");
+        const dots = banner.querySelectorAll("ol li");
+        const prevBtn = banner.querySelector(".prev");
+        const nextBtn = banner.querySelector(".next");
+
+        let currentIndex = 0;
+        const totalSlides = lis.length;
+
+        function updateSlide(index) {
+          ul.style.transform = `translateX(-${index * 100}%)`;
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+          });
+        }
+
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          updateSlide(currentIndex);
+        }
+
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+          updateSlide(currentIndex);
+        }
+
+        nextBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          nextSlide();
+        });
+
+        prevBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          prevSlide();
+        });
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", function () {
+            currentIndex = index;
+            updateSlide(currentIndex);
+          });
+        });
+
+        // Auto slide
+        let intervalId = setInterval(nextSlide, 3000);
+
+        banner.addEventListener("mouseenter", () => {
+          clearInterval(intervalId);
+        });
+
+        banner.addEventListener("mouseleave", () => {
+          intervalId = setInterval(nextSlide, 3000);
+        });
+      });
+    </script>
+  </body>
+</html>
